@@ -1,0 +1,63 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>eOglas</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Style/StyleSheet4.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top" style=" background-color: #171c31 ">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("eOglas", "Home", "Ads", new { area = "" }, new {@id="naslov", @class = "navbar-brand" }) 
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="left-side">@Html.ActionLink("New Ad", "Create", "Ads", new { @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })</li>
+                    <li class="left-side">@Html.ActionLink("All Ads", "Index", "Ads", new { @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })</li>
+                  
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
+
+<style>
+    .left-side {
+        border-block-color: #FFE74C;
+        border-style: groove;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+    #naslov {
+        font-weight: 600;
+        font-size: 35px;
+        color: #FFE74C;
+        font-family: 'Century Gothic';
+        margin-top: 5px;
+    }
+</style>

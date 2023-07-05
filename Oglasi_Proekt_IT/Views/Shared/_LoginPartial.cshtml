@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNet.Identity
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right", @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        <li>
+            @Html.ActionLink("My Ads", "CreatedAds", "Ads", new {@class = "right-side", @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })
+        </li>
+        <li class = "right-side">
+            @Html.ActionLink("Hello " + User.Identity.GetUserName(), "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage",  @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })
+            <!--<div id="userPic"></div>-->
+        </li>
+        <li><a class="right-side" style="color: #FFE74C; font-family: 'Century Gothic',sans-serif; font-size: 20px " href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+
+        <li>@Html.ActionLink("Register", "Register", "Account",  routeValues: null, htmlAttributes: new { id = "registerLink",@class="right-side", @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })</li>
+        <li>@Html.ActionLink("Log in", "Login", "Account",  routeValues: null, htmlAttributes: new { id = "loginLink",@class = "right-side", @style = "color:#FFE74C; font-family:'Century Gothic',sans-serif; font-size:20px" })</li>
+    </ul>
+}
+@{ 
+    ///var subs = User.Identity.GetUserName().Substring(0, 1);
+}
+<script>
+    @*var subs = "@subs";
+    document.getElementById("userPic").innerHTML = subs;*@
+</script>
+
+<style>
+    .right-side {
+        border-block-color: #FFE74C;
+        border-style: groove;
+        border-radius: 10px;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        margin-right: 5px;
+        margin-left: 5px;
+    }
+
+    #userPic {
+        background-color: #bbb;
+        border-radius: 50%;
+        width: 25px;
+        height: 25px;
+        text-transform: uppercase;
+        color: black;
+    }
+</style>
